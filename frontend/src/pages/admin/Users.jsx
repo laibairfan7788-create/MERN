@@ -79,7 +79,8 @@ const Users = () => {
     try {
       setLoading(true)
       const res = await getUsers()
-      setUsers(Array.isArray(res.data) ? res.data : [])
+      const userData = res.data?.data || []
+      setUsers(Array.isArray(userData) ? userData : [])
     } catch {
       notify('Failed to load users', 'error')
     } finally {

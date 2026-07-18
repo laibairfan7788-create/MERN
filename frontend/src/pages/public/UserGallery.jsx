@@ -60,7 +60,8 @@ const UserGallery = ({ onSelectImage }) => {
       try {
         setLoading(true)
         const res = await getPublicGallery()
-        setImages(Array.isArray(res.data) ? res.data : [])
+        const imageData = res.data?.data || []
+        setImages(Array.isArray(imageData) ? imageData : [])
       } catch {
         notify('Failed to load gallery', 'error')
       } finally {
@@ -106,7 +107,7 @@ const UserGallery = ({ onSelectImage }) => {
             </div>
           ) : (
             images.map((img) => (
-              <Col key={img.id} md={4} sm={6}>
+              <Col key={img._id || img.id} md={4} sm={6}>
                 <Card className="gallery-card" onClick={() => handleImageClick(img)}>
                   <Card.Img variant="top" src={img.url} />
                   <Card.Body>

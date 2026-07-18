@@ -75,7 +75,8 @@ const Products = () => {
     try {
       setLoading(true)
       const res = await getProducts()
-      setProducts(Array.isArray(res.data) ? res.data : [])
+      const productData = res.data?.data || []
+      setProducts(Array.isArray(productData) ? productData : [])
     } catch {
       notify('Failed to load products', 'error')
     } finally {
