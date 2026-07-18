@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const Project = require('../models/Project');
+const Product = require('../models/Product');
 const Gallery = require('../models/Gallery');
 const Contact = require('../models/Contact');
 const FAQ = require('../models/FAQ');
@@ -8,9 +8,9 @@ const Distributor = require('../models/Distributor');
 // ==================== DASHBOARD STATS ====================
 exports.getDashboardStats = async (req, res) => {
   try {
-    const [totalUsers, totalProjects, totalGallery, totalContacts, totalFAQs, totalDistributors] = await Promise.all([
+    const [totalUsers, totalProducts, totalGallery, totalContacts, totalFAQs, totalDistributors] = await Promise.all([
       User.countDocuments(),
-      Project.countDocuments(),
+      Product.countDocuments(),
       Gallery.countDocuments(),
       Contact.countDocuments(),
       FAQ.countDocuments(),
@@ -22,8 +22,8 @@ exports.getDashboardStats = async (req, res) => {
       .sort({ createdAt: -1 })
       .limit(5);
 
-    // Get recent projects
-    const recentProjects = await Project.find()
+    // Get recent products
+    const recentProducts = await Product.find()
       .sort({ createdAt: -1 })
       .limit(5);
 
@@ -35,7 +35,7 @@ exports.getDashboardStats = async (req, res) => {
       data: {
         stats: {
           totalUsers,
-          totalProjects,
+          totalProducts,
           totalGallery,
           totalContacts,
           totalFAQs,
@@ -43,7 +43,7 @@ exports.getDashboardStats = async (req, res) => {
           pendingContacts
         },
         recentContacts,
-        recentProjects
+        recentProducts
       }
     });
   } catch (error) {

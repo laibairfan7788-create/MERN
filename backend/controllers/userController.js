@@ -48,13 +48,13 @@ exports.getOrders = async (req, res) => {
 // ─── Create quote request (public – no auth needed) ─────────────
 exports.createQuote = async (req, res) => {
   try {
-    const { projectType, areaSize, location, budget, message, name, email, phone } = req.body;
-    if (!projectType || !areaSize) {
-      return res.status(400).json({ message: 'Project type and area size are required' });
+    const { productType, areaSize, location, budget, message, name, email, phone } = req.body;
+    if (!productType || !areaSize) {
+      return res.status(400).json({ message: 'Product type and area size are required' });
     }
 
     const quoteData = {
-      projectType,
+      productType,
       areaSize,
       location,
       budget,

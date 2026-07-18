@@ -148,7 +148,11 @@ const Home = () => {
               <div className="section-eyebrow">Why Choose Us</div>
               <h2 className="section-title">Why <span>GARS</span> Industries?</h2>
               <div className="divider"></div>
-              <p className="section-lead mb-4">We think you'll find GARS artificial grass to be more than just synthetic turf. It's a lifestyle that saves money, precious resources, and gives you more free time to enjoy what matters most.</p>
+              <p className="section-lead mb-4">We think you’ll find GARS artificial grass to more than just synthetic turf, the much more to it. GARS synthetic grass is lifestyle which not only saves money and precious resources. Also allows more free time for customers the essential things in life. Instead of fussing around mowing the lawn on weekend our synthetic landscape turf is virtually maintenance free. No more watering! No more mowing! Not only have lower water and power bills, but you have more free time to whatever you enjoy doing. It easy seen why GARS synthetic grass is perfect landscaping solution.
+
+Toping equipment’s, raw materials, technology and management create high quality artificial turf grass and yarn. We have been in front rank of artificial turf manufacturers in Pakistan.
+
+</p>
               {[
                 { num: '01', title: 'Fastest Work Completion', desc: 'As experts with years of installation experience, we are the team with the fastest task handling in the industry.' },
                 { num: '02', title: 'Highly Skilled Professionals', desc: 'Our highly skilled, friendly professionals are ready to transform your home or business with precision craftsmanship.' },

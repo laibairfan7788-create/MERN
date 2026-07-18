@@ -17,7 +17,7 @@ import { useAuth } from '../../context/AuthContext'
 import { useNotification } from '../../context/NotificationContext'
 
 const Register = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', password: '', role: 'user' })
+  const [formData, setFormData] = useState({ name: '', email: '', password: '', role: 'admin' })
   const { register } = useAuth()
   const { notify } = useNotification()
   const navigate = useNavigate()

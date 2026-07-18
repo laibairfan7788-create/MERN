@@ -1,5 +1,4 @@
 
-
 // import React from 'react'
 // import { Routes, Route } from 'react-router-dom'
 // import { useAuth } from '../context/AuthContext'
@@ -17,17 +16,19 @@
 // import Gallery from '../pages/public/Gallery'
 // import Distributors from '../pages/public/Distributors'
 // import Contact from '../pages/public/Contact'
+// import QuoteRequest from '../pages/user/QuoteRequest'
+
+// // ✅ Dashboard is public – use the updated UserDashboard (works for all users)
+// import UserDashboard from '../pages/user/Dashboard'
 
 // // Auth pages
 // import Login from '../pages/auth/Login'
 // import Register from '../pages/auth/Register'
 // import ForgotPassword from '../pages/auth/ForgotPassword'
 
-// // User pages
-// import UserDashboard from '../pages/user/Dashboard'
+// // Private user pages
 // import Profile from '../pages/user/Profile'
 // import Orders from '../pages/user/Orders'
-// import QuoteRequest from '../pages/user/QuoteRequest'
 
 // // Admin pages
 // import AdminDashboard from '../pages/admin/Dashboard'
@@ -47,23 +48,22 @@
 
 //   return (
 //     <Routes>
-//       {/* All routes that use MainLayout (public + user private) */}
 //       <Route element={<MainLayout />}>
 //         {/* Public routes */}
 //         <Route path="/" element={<Home />} />
 //         <Route path="/about" element={<About />} />
 //         <Route path="/services" element={<Services />} />
-//            <Route path="/applications" element={<Applications />} />
+//         <Route path="/applications" element={<Applications />} />
 //         <Route path="/gallery" element={<Gallery />} />
 //         <Route path="/distributors" element={<Distributors />} />
 //         <Route path="/contact" element={<Contact />} />
+//         <Route path="/quote" element={<QuoteRequest />} />
+//         <Route path="/dashboard" element={<UserDashboard />} />   {/* ✅ public */}
 
-//         {/* User private routes — nested inside same MainLayout */}
+//         {/* Protected routes (login required) */}
 //         <Route element={<PrivateRoute />}>
-//           <Route path="/dashboard" element={<UserDashboard />} />
 //           <Route path="/profile" element={<Profile />} />
 //           <Route path="/orders" element={<Orders />} />
-//           <Route path="/quote" element={<QuoteRequest />} />
 //         </Route>
 //       </Route>
 
@@ -74,7 +74,7 @@
 //         <Route path="/forgot-password" element={<ForgotPassword />} />
 //       </Route>
 
-//       {/* Admin private routes with AdminLayout */}
+//       {/* Admin routes */}
 //       <Route element={<AdminRoute />}>
 //         <Route element={<AdminLayout />}>
 //           <Route path="/admin/dashboard" element={<AdminDashboard />} />
@@ -104,12 +104,10 @@ import Home from '../pages/public/Home'
 import About from '../pages/public/About'
 import Services from '../pages/public/Services'
 import Applications from '../pages/public/Applications'
-import Gallery from '../pages/public/Gallery'
+import Gallery from '../pages/public/UserGallery'   // ✅ Changed to UserGallery
 import Distributors from '../pages/public/Distributors'
 import Contact from '../pages/public/Contact'
 import QuoteRequest from '../pages/user/QuoteRequest'
-
-// ✅ Dashboard is public – use the updated UserDashboard (works for all users)
 import UserDashboard from '../pages/user/Dashboard'
 
 // Auth pages
@@ -126,7 +124,7 @@ import AdminDashboard from '../pages/admin/Dashboard'
 import AdminUsers from '../pages/admin/Users'
 import AdminProducts from '../pages/admin/Products'
 import AdminOrders from '../pages/admin/Orders'
-import AdminGallery from '../pages/admin/GalleryManager'
+import AdminGallery from '../pages/admin/GalleryManager'   // ✅ Added
 import AdminSettings from '../pages/admin/Settings'
 
 // Route guards
@@ -149,16 +147,16 @@ const AppRoutes = () => {
         <Route path="/distributors" element={<Distributors />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/quote" element={<QuoteRequest />} />
-        <Route path="/dashboard" element={<UserDashboard />} />   {/* ✅ public */}
+        <Route path="/dashboard" element={<UserDashboard />} />
 
-        {/* Protected routes (login required) */}
+        {/* Protected routes */}
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/orders" element={<Orders />} />
         </Route>
       </Route>
 
-      {/* Auth routes (no navbar/footer) */}
+      {/* Auth routes */}
       <Route element={<AuthLayout />}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -172,7 +170,7 @@ const AppRoutes = () => {
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/products" element={<AdminProducts />} />
           <Route path="/admin/orders" element={<AdminOrders />} />
-          <Route path="/admin/gallery" element={<AdminGallery />} />
+          <Route path="/admin/gallery" element={<AdminGallery />} />   {/* ✅ Added */}
           <Route path="/admin/settings" element={<AdminSettings />} />
         </Route>
       </Route>

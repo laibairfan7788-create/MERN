@@ -1,36 +1,78 @@
-// import React from "react";
 
-// // Intentionally minimal. Sidebar/Header can be added later.
-// export default function AdminLayout({ children }) {
+
+// import React from 'react'
+// import { Outlet } from 'react-router-dom'
+// import Sidebar from '../admin/Sidebar'
+// import AdminHeader from '../admin/AdminHeader'
+// import { Container, Row, Col } from 'react-bootstrap'
+// import { GlobalStyle } from '../../assets/styles/globals'
+// import { ThemeProvider } from 'styled-components'
+// import { theme } from '../../assets/styles/theme'
+
+// const AdminLayout = () => {
 //   return (
-//     <div className="min-vh-100 bg-light">
-//       <div className="container py-4">{children}</div>
-//     </div>
-//   );
+//     <ThemeProvider theme={theme}>
+//       <GlobalStyle />
+//       <div style={{ display: 'flex', minHeight: '100vh' }}>
+//         <Sidebar />
+//         <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+//           <AdminHeader />
+//           <Container fluid style={{ padding: '1.5rem', backgroundColor: '#f8f9fa', flex: 1 }}>
+//             <Outlet />
+//           </Container>
+//         </div>
+//       </div>
+//     </ThemeProvider>
+//   )
 // }
 
+// export default AdminLayout
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Sidebar from '../admin/Sidebar'
 import AdminHeader from '../admin/AdminHeader'
-import { Container, Row, Col } from 'react-bootstrap'
+import styled from 'styled-components'
 import { GlobalStyle } from '../../assets/styles/globals'
 import { ThemeProvider } from 'styled-components'
 import { theme } from '../../assets/styles/theme'
+
+const LayoutWrapper = styled.div`
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f9;
+
+  .content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 250px;
+  }
+
+  .page-content {
+    padding: 1.5rem;
+    flex: 1;
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      margin-left: 0;
+    }
+  }
+`
 
 const AdminLayout = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <div style={{ display: 'flex', minHeight: '100vh' }}>
+      <LayoutWrapper>
         <Sidebar />
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <div className="content-wrapper">
           <AdminHeader />
-          <Container fluid style={{ padding: '1.5rem', backgroundColor: '#f8f9fa', flex: 1 }}>
+          <div className="page-content">
             <Outlet />
-          </Container>
+          </div>
         </div>
-      </div>
+      </LayoutWrapper>
     </ThemeProvider>
   )
 }
